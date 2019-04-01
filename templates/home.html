@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home | Stock Market</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+</head>
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#"><img src="{{ url_for('static', filename='logo1.png') }}" width="130"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="nav">
+				<div id="headers">
+					<ul>
+						<li><a href="#about" class="slideToPage">News</a></li>
+						<li><a href="#events" class="slideToPage">Markets</a></li>
+						<li><a href="#initiatives" class="slideToPage">Mututal Funds</a></li>
+						<li><a href="sponsors/index.html">Commodities</a></li>
+						<li><a href="#contact" class="slideToPage">Cryptocurrency</a></li>
+						<li><a href="#contact" class="slideToPage">Portfolio</a></li>
+					</ul>
+				</div>
+				<div id="login">
+					<ul>
+						<li><button onclick="location.href = '{{ url_for('login') }}';" type="submit" class="btn btn-primary" value="login">Sign In</button></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div id="marquee_news" >
+			<marquee>
+				IndiGo gets its mojo back, is the undisputed OTP king among Indian airlines in 2017 Personal Finance &nbsp;&nbsp;|&nbsp;&nbsp;3 simple steps can help you save income tax without investing fresh funds
+			</marquee>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="row">
+			<div id="content_header">
+				<div class="col-md-8">
+					<h3>TOP NEWS</h3>
+				</div>
+				<div class="col-md-4">
+					<input type="text" name="search" placeholder="" value="">
+					<button>search</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="row" id="all_news">
+			<div class="col-md-4">
+				{% for item in main_news %}
+					<div class="main_content">
+						<h4>{{ item[0] }}</h4>
+						<img src="{{ item[1] }}" width="100%">
+						<p>{{ item[2] }}</p>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="col-md-4" id="normal_content">
+				<ul>
+					{% for item in normal_news %}
+						<li><a>{{ item }}<a></li><hr>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
